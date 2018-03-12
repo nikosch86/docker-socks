@@ -11,4 +11,5 @@ RUN chmod +x /prep.sh
 
 EXPOSE 22
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["sh", "-c", "/prep.sh && exec /usr/sbin/sshd -D -e"]
+ENV SSHD_PORT 22
+CMD ["sh", "-c", "/prep.sh && exec /usr/sbin/sshd -p ${SSHD_PORT} -o GatewayPorts=yes -D -e"]
