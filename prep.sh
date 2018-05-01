@@ -4,7 +4,8 @@ if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
     /usr/bin/ssh-keygen -A
     PASSWORD=$(pwgen -cnB 16 1)
     echo "user:$PASSWORD" | chpasswd
-    echo "Generated password for user 'user': $PASSWORD"
+    echo "root:$PASSWORD" | chpasswd
+    echo "Generated password for user 'user' and 'root': $PASSWORD"
     if [ ! -z "$SSH_PUBLIC_KEY" ]; then
       echo "injecting public key"
       echo "$SSH_PUBLIC_KEY" > /home/user/.ssh/authorized_keys
