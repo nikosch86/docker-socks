@@ -17,3 +17,9 @@ if [ -f /home/user/.ssh/authorized_keys ]; then
   echo "Content of /home/user/.ssh/authorized_keys:"
   cat /home/user/.ssh/authorized_keys
 fi
+PUBLIC_IP=$(curl -sSq ifconfig.co)
+if [ $? -gt 0 ]; then
+  echo -en "\ncan't connect to ifconfig.co to figure out public IP\n\n"
+else
+  echo -en "\nssh -D1080 -p8022 -fN -luser ${PUBLIC_IP}\n\n"
+fi

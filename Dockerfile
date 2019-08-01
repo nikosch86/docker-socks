@@ -1,6 +1,6 @@
 FROM alpine:3.7
 
-RUN apk add --update openssh dumb-init pwgen && rm -rf /var/cache/apk/*
+RUN apk add --update openssh dumb-init pwgen curl && rm -rf /var/cache/apk/*
 RUN adduser -D user
 RUN mkdir /home/user/.ssh; chown user:user /home/user/.ssh; chmod 0700 /home/user/.ssh; \
     touch /home/user/.ssh/authorized_keys; chown user:user /home/user/.ssh/authorized_keys; \
