@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:3.22
 
 RUN apk add --update openssh dumb-init pwgen curl && rm -rf /var/cache/apk/*
 RUN adduser -D user
